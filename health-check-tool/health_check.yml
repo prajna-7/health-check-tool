@@ -1,0 +1,27 @@
+- name: Basic Health Check
+  hosts: servers
+  tasks:
+    - name: Check Disk Usage
+      command: df -h
+      register: disk_usage
+
+    - name: Check CPU Usage
+      shell: "grep 'cpu ' /proc/stat"
+      register: cpu_usage
+
+    - name: Check Memory Usage
+      command: free -h
+      register: memory_usage
+
+    - name: Print Disk Usage
+      debug:
+        var: disk_usage.stdout_lines
+
+    - name: Print CPU Usage
+      debug:
+        var: cpu_usage.stdout_lines
+
+    - name: Print Memory Usage
+      debug:
+        var: memory_usage.stdout_lines
+
