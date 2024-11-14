@@ -66,7 +66,13 @@ Swap:          4.0Gi       4.0Mi       4.0Gi
 
 Below are screenshots that demonstrate the Health Check Tool in action.
 
-1. **Jenkins Job Setup Screenshot**
+1. **Jenkins Job Setup Screenshot**## Email Notification
+
+This project is configured to send an email notification every 15 minutes with the status of the health check report. Below is an example of the email notification:
+
+![Email Notification Screenshot](screenshots/email_notification.png) <!-- Add the correct path if different -->
+
+The email includes details about the job name, build number, URL to the Jenkins job, and the result of the health check, along with an attachment for further inspection.
    This screenshot shows the configuration of the Health Check Job in Jenkins. Here, we set up the job to run the Ansible playbook and monitor system health.
 
 ![image](https://github.com/user-attachments/assets/df24b4ef-1347-4569-93db-5f15071c3517)
@@ -82,6 +88,14 @@ Below are screenshots that demonstrate the Health Check Tool in action.
 
 ![image](https://github.com/user-attachments/assets/99502301-57c4-45da-aaa5-d7267f97a4dc)
 
+4. **Email Notification**
+
+This project is configured to send an email notification every 15 minutes with the status of the health check report. Below is an example of the email notification:
+
+![image](https://github.com/user-attachments/assets/5e81babe-f085-466b-8344-f9af11ca2b38)
+
+
+The email includes details about the job name, build number, URL to the Jenkins job, and the result of the health check, along with an attachment for further inspection.
 
 
 
