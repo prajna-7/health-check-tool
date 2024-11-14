@@ -13,15 +13,6 @@
       command: free -h
       register: memory_usage
 
-    - name: Print Disk Usage
-      debug:
-        var: disk_usage.stdout_lines
-
-    - name: Print CPU Usage
-      debug:
-        var: cpu_usage.stdout_lines
-
-    - name: Print Memory Usage
-      debug:
-        var: memory_usage.stdout_lines
+    - name: Write Health Report to File
+      local_action: copy content="{{ disk_usage.stdout }}\n{{ cpu_usage.stdout }}\n{{ memory_usage.stdout }}" dest=/var/lib/jenkins/workspace/Health Check Job/health_report.txt
 
