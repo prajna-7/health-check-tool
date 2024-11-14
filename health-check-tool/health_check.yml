@@ -5,14 +5,30 @@
       command: df -h
       register: disk_usage
 
+    - name: Append Disk Usage to Report
+      lineinfile:
+        path: health_report.txt
+        create: yes
+        line: "Disk Usage:\n{{ disk_usage.stdout }}\n"
+      delegate_to: localhost
+
     - name: Check CPU Usage
       shell: "grep 'cpu ' /proc/stat"
       register: cpu_usage
+
+    - name: Append CPU Usage to Report
+      lineinfile:
+        path: health_report.txt
+        line: "CPU Usage:\n{{ cpu_usage.stdout }}\n"
+      delegate_to: localhost
 
     - name: Check Memory Usage
       command: free -h
       register: memory_usage
 
-    - name: Write Health Report to File
-      local_action: copy content="{{ disk_usage.stdout }}\n{{ cpu_usage.stdout }}\n{{ memory_usage.stdout }}" dest=/var/lib/jenkins/workspace/Health Check Job/health_report.txt
+    - name: Append Memory Usage to Report
+      lineinfile:
+        path: health_report.txt
+        line: "Memory Usage:\n{{ memory_usage.stdout }}\n"
+      delegate_to: localhost
 
